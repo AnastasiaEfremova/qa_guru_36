@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class AutomationPracticeForm {
@@ -26,7 +27,7 @@ public class AutomationPracticeForm {
         $("#firstName").setValue("Anastasia");
         $("#lastName").setValue("Test");
         $("#userEmail").setValue("anastasia.test@gmail.com");
-        $("label[for='gender-radio-2']").click(); // Селектор ищет элемент <label> с атрибутом for="gender-radio-2"
+        $("#genterWrapper").$(byText("Female")).click();
         $("#userNumber").setValue("9994441312");
 
         // Заполнить данные поля Date Of Birth
@@ -40,7 +41,7 @@ public class AutomationPracticeForm {
         $("#subjectsInput").setValue("Physics");
         $$(".subjects-auto-complete__option").findBy(text("Physics")).click();
 
-        $("label[for='hobbies-checkbox-2']").click();
+        $("#hobbiesWrapper").$(byText("Music")).click();
 
         $("#uploadPicture").uploadFromClasspath("dog.png");  // для файла из ресурсов (src/test/resources)
 
@@ -62,7 +63,7 @@ public class AutomationPracticeForm {
         $(".table-responsive").shouldHave(text("21 May,2000"));
         $(".table-responsive").shouldHave(text("Test"));
         $(".table-responsive").shouldHave(text("Physics"));
-        $(".table-responsive").shouldHave(text("Reading"));
+        $(".table-responsive").shouldHave(text("Music"));
         $(".table-responsive").shouldHave(text("dog.png"));
         $(".table-responsive").shouldHave(text("Kazan"));
         $(".table-responsive").shouldHave(text("NCR Delhi"));
