@@ -13,7 +13,7 @@ public class AutomationPracticeForm {
     @BeforeAll
     static void baseSteps() {
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.holdBrowserOpen = true; // После выполнения теста браузер останется открытым
+        //Configuration.holdBrowserOpen = true; // После выполнения теста браузер останется открытым
         Configuration.pageLoadStrategy = "eager"; // Не будем дожидаться полной загрузки страницы
     }
 
