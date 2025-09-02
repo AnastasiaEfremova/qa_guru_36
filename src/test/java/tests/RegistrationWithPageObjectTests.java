@@ -1,6 +1,5 @@
 package tests;
 
-import automationPracticeForm.BaseTest;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 

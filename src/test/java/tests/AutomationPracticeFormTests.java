@@ -1,14 +1,12 @@
-package automationPracticeForm;
+package tests;
 
-import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class AutomationPracticeForm extends BaseTest {
+public class AutomationPracticeFormTests extends BaseTest {
 
     @Test
     void testAutomationPracticeForm() {
@@ -51,10 +49,6 @@ public class AutomationPracticeForm extends BaseTest {
         $(".table-responsive").shouldHave(text("dog.png"));
         $(".table-responsive").shouldHave(text("Kazan"));
         $(".table-responsive").shouldHave(text("NCR Delhi"));
-
-        // 4. Добавлены новые 2 теста
-//        $(".modal-header").shouldHave(text("Thanks for submitting the form"));
-//        $(byText("Close")).click();
 
     }
 }
