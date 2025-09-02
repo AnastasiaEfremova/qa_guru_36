@@ -8,14 +8,7 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class AutomationPracticeForm {
-
-    @BeforeAll
-    static void baseSteps() {
-        Configuration.baseUrl = "https://demoqa.com";
-        //Configuration.holdBrowserOpen = true; // После выполнения теста браузер останется открытым
-        Configuration.pageLoadStrategy = "eager"; // Не будем дожидаться полной загрузки страницы
-    }
+public class AutomationPracticeForm extends BaseTest {
 
     @Test
     void testAutomationPracticeForm() {
@@ -29,33 +22,24 @@ public class AutomationPracticeForm {
         $("#userEmail").setValue("anastasia.test@gmail.com");
         $("#genterWrapper").$(byText("Female")).click();
         $("#userNumber").setValue("9994441312");
-
-        // Заполнить данные поля Date Of Birth
         $("#dateOfBirthInput").click();
         $("select.react-datepicker__year-select").click();
         $("select.react-datepicker__year-select").selectOptionByValue("2000");
         $("select.react-datepicker__month-select").click();
         $("select.react-datepicker__month-select").selectOptionByValue("4");
         $("div.react-datepicker__day--021").click();
-
         $("#subjectsInput").setValue("Physics");
         $$(".subjects-auto-complete__option").findBy(text("Physics")).click();
-
         $("#hobbiesWrapper").$(byText("Music")).click();
-
         $("#uploadPicture").uploadFromClasspath("dog.png");  // для файла из ресурсов (src/test/resources)
-
         $("#currentAddress").setValue("Kazan");
-
         $("#subjectsInput").setValue("Math");
-
-        // Блок State and City
         $("#react-select-3-input").setValue("NCR").pressEnter();
         $("#react-select-4-input").setValue("Delhi").pressEnter();
         $("#submit").pressEnter();
 
 
-        // Проверить корректность наполнения формы
+        // 3. Проверить корректность наполнения формы
         $(".table-responsive").shouldHave(text("Anastasia Test"));
         $(".table-responsive").shouldHave(text("Test"));
         $(".table-responsive").shouldHave(text("anastasia.test@gmail.com"));
@@ -68,6 +52,9 @@ public class AutomationPracticeForm {
         $(".table-responsive").shouldHave(text("Kazan"));
         $(".table-responsive").shouldHave(text("NCR Delhi"));
 
+        // 4. Добавлены новые 2 теста
+//        $(".modal-header").shouldHave(text("Thanks for submitting the form"));
+//        $(byText("Close")).click();
 
     }
 }
