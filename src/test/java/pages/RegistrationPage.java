@@ -70,7 +70,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setHobby(String subject) {
-        hobbiesInput.$(byText("Music")).click();
+        hobbiesInput.$(byText(subject)).click();
         return this;
     }
 
