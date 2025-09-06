@@ -1,0 +1,38 @@
+{
+  "brand": "Toyota",
+  "country": "Japan",
+  "founded": 1937,
+  "models": [
+    {
+      "name": "Camry",
+      "type": "Sedan",
+      "year": 2023
+    },
+    {
+      "name": "Corolla",
+      "type": "Sedan",
+      "year": 2023
+    },
+    {
+      "name": "RAV4",
+      "type": "SUV",
+      "year": 2023
+    },
+    {
+      "name": "Highlander",
+      "type": "SUV",
+      "year": 2023
+    },
+    {
+      "name": "Prius",
+      "type": "Hybrid",
+      "year": 2023
+    },
+    {
+      "name": "Land Cruiser",
+      "type": "SUV",
+      "year": 2023
+    }
+  ],
+  "features": ["Hybrid", "Safety Sense", "All-Wheel Drive"]
+}
