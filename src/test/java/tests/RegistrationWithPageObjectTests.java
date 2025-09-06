@@ -3,7 +3,6 @@ package tests;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
-
 public class RegistrationWithPageObjectTests extends BaseTest {
 
     public static RegistrationPage registrationPage = new RegistrationPage();
@@ -17,7 +16,7 @@ public class RegistrationWithPageObjectTests extends BaseTest {
                 .setUserEmail("anastasia.test@gmail.com")
                 .setGender("Female")
                 .setUserNumber("9994441312")
-                .setDateOfBirth("21", "4", "1994")
+                .setDateOfBirth("21", "July", "1994")
                 .setSubject("Physics")
                 .setHobby("Music")
                 .uploadPicture("dog.png")
@@ -30,7 +29,7 @@ public class RegistrationWithPageObjectTests extends BaseTest {
                 .checkResult("Student Email", "anastasia.test@gmail.com")
                 .checkResult("Gender", "Female")
                 .checkResult("Mobile", "9994441312")
-                .checkResult("Date of Birth", "21 May,2000")
+                .checkResult("Date of Birth", "21 July,1994")
                 .checkResult("Subjects", "Physics")
                 .checkResult("Hobbies", "Music")
                 .checkResult("Picture", "dog.png")
@@ -65,6 +64,4 @@ public class RegistrationWithPageObjectTests extends BaseTest {
 
         registrationPage.shouldNotHaveTableResult();
     }
-
-
 }
