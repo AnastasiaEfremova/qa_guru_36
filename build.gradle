@@ -9,6 +9,13 @@ repositories {
     mavenCentral()
 }
 
+compileJava {
+    options.encoding = 'UTF-8'
+}
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
+
 group = 'org.examle'
 version = '1.0-SNAPSHOT'
 
@@ -16,7 +23,7 @@ allure {
     report {
         version.set("2.19.0")
     }
-    adapter { // генерирует build.allure-results, собирает результаты тестов в json
+    adapter {
         aspectjWeaver.set(true)
         frameworks {
             junit5 {

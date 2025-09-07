@@ -21,31 +21,34 @@ public class StepsTest {
 
         SelenideLogger.addListener("allure", new AllureSelenide());
 
-        step("Îòêðûâàåì ãëàâíóþ ñòðàíèöó", () -> {
+        step("ÐžÑ‚ÐºÑ€Ñ‹Ñ‚ÑŒ Ð³Ð»Ð°Ð²Ð½ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ github ", () -> {
             open("https://github.com/");
         });
 
-        step("Èùåì ðåïîçèòîðèé " + REPOSITORY, () -> {
+        step("ÐÐ°Ð¹Ñ‚Ð¸ Ñ€ÐµÐ¿Ð¾Ð·Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¹ " + REPOSITORY, () -> {
             $(".header-search-button").click();
             $("#query-builder-test").sendKeys(REPOSITORY);
             $("#query-builder-test").pressEnter();
         });
 
-        step("Êëèêàåì ïî ññûëêå ðåïîçèòîðèÿ", () -> {
+        step("ÐšÐ»Ð¸ÐºÐ½ÑƒÑ‚ÑŒ Ð½Ð° Ð½Ð°Ð¹Ð´ÐµÐ½Ð½Ñ‹Ð¹ Ñ€ÐµÐ¿Ð¾Ð·Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¹ ", () -> {
             $(linkText(REPOSITORY)).click();
         });
 
-        step("Îòêðûâàåì òàá Issues ", () -> {
+        step("ÐšÐ»Ð¸ÐºÐ½ÑƒÑ‚ÑŒ Ð½Ð° Issues ", () -> {
             $("#issues-tab").click();
         });
 
-        step("Ïðîâåðÿåì íàëè÷èå Issues ñ íîìåðîì " + ISSUE, () -> {
+        step("Issues ÑÐ¾Ð´ÐµÑ€Ð¶Ð¸Ñ‚ Ð½Ð¾Ð¼ÐµÑ€ " + ISSUE, () -> {
             $(withText(ISSUE)).should(Condition.exist);
         });
     }
 
     @Test
     public void testAnnotatedTest() {
+
+        SelenideLogger.addListener("allure", new AllureSelenide());
+
         WebSteps webSteps = new WebSteps();
         webSteps.openMainPage();
         webSteps.searchForRepository(REPOSITORY);

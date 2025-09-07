@@ -22,7 +22,7 @@ public class FilesTests {
     void successExtractAndCheckPdfFileFromZip() throws Exception {
         PDF pdfFile = extractor.extractPdfFromZip("test.zip");
         assertTrue(pdfFile.numberOfPages > 0);
-        assertTrue(pdfFile.text.contains("Quisque volutpat condimentum velit."), "pdf файл не содержит нужного текста");
+        assertTrue(pdfFile.text.contains("Quisque volutpat condimentum velit."), "pdf РЅРµ СЃРѕРґРµСЂР¶РёС‚ РЅСѓР¶РЅС‹Р№ С‚РµРєСЃС‚.");
     }
 
     @Test
@@ -49,7 +49,7 @@ public class FilesTests {
         InputStream jsonStream = getClass().getClassLoader()
                 .getResourceAsStream("carBrand.json");
 
-        assertNotNull(jsonStream, "JSON файл не найден в resources");
+        assertNotNull(jsonStream, "JSON РЅРµ РЅР°Р№РґРµРЅ РІ resources");
 
         CarBrand carBrand = objectMapper.readValue(jsonStream, CarBrand.class);
 

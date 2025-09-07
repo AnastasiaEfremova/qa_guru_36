@@ -15,29 +15,29 @@ public class WebSteps {
             searchString = $("#query-builder-test"),
             issuesTub = $("#issues-tab");
 
-    @Step("Открываем главную страницу")
+    @Step("РћС‚РєСЂС‹С‚СЊ РіР»Р°РІРЅСѓСЋ СЃС‚СЂР°РЅРёС†Сѓ github ")
     public void openMainPage() {
         open("https://github.com/");
     }
 
-    @Step("Ищем репозиторий {repository}")
+    @Step("РќР°Р№С‚Рё СЂРµРїРѕР·РёС‚РѕСЂРёР№ {repository}")
     public void searchForRepository(String repository) {
         searchButton.click();
         searchString.sendKeys(repository);
         searchString.submit();
     }
 
-    @Step("Кликаем по ссылке репозитория {repository}")
+    @Step("РљР»РёРєРЅСѓС‚СЊ РЅР° {repository}")
     public void clickOnRepositoryLink(String repository) {
         $(linkText(repository)).click();
     }
 
-    @Step("Открываем таб Issues ")
+    @Step("РљР»РёРєРЅСѓС‚СЊ РЅР° Issues ")
     public void openIssuesTub() {
         issuesTub.click();
     }
 
-    @Step("Проверяем наличие Issues с номером {number}")
+    @Step("Issues СЃРѕРґРµСЂР¶РёС‚ РЅРѕРјРµСЂ - {number}")
     public void shouldHaveIssueWithNumber(String number) {
         $(withText(number)).should(Condition.exist);
     }

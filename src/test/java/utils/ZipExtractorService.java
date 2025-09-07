@@ -14,7 +14,7 @@ public class ZipExtractorService {
         InputStream zipStream = getClass().getClassLoader().getResourceAsStream(zipResourcePath);
 
         if (zipStream == null) {
-            throw new IOException("ZIP файл не найден: " + zipResourcePath);
+            throw new IOException("ZIP С„Р°Р№Р» РЅРµ РЅР°Р№РґРµРЅ: " + zipResourcePath);
         }
 
         try (ZipInputStream zis = new ZipInputStream(zipStream)) {
@@ -28,7 +28,7 @@ public class ZipExtractorService {
             }
         }
 
-        throw new IOException("PDF файл не найден в архиве");
+        throw new IOException("PDF РЅРµ РЅР°Р№РґРµРЅ РІ Р°СЂС…РёРІРµ");
     }
 
 
@@ -51,7 +51,7 @@ public class ZipExtractorService {
         InputStream zipStream = getClass().getClassLoader().getResourceAsStream(zipResourcePath);
 
         if (zipStream == null) {
-            throw new IOException("ZIP файл не найден: " + zipResourcePath);
+            throw new IOException("ZIP С„Р°Р№Р» РЅРµ РЅР°Р№РґРµРЅ: " + zipResourcePath);
         }
 
         try (ZipInputStream zis = new ZipInputStream(zipStream)) {
@@ -65,7 +65,7 @@ public class ZipExtractorService {
             }
         }
 
-        throw new IOException("XLS файл не найден в архиве");
+        throw new IOException("XLS С„Р°Р№Р» РЅРµ РЅР°Р№РґРµРЅ РІ Р°СЂС…РёРІРµ");
     }
 
     private boolean isExcelFile(String fileName) {
@@ -96,7 +96,7 @@ public class ZipExtractorService {
         InputStream zipStream = getClass().getClassLoader().getResourceAsStream(zipResourcePath);
 
         if (zipStream == null) {
-            throw new IOException("ZIP файл не найден: " + zipResourcePath);
+            throw new IOException("ZIP С„Р°Р№Р» РЅРµ РЅР°Р№РґРµРЅ: " + zipResourcePath);
         }
 
         byte[] zipData = zipStream.readAllBytes();
@@ -106,17 +106,17 @@ public class ZipExtractorService {
 
             while ((entry = zis.getNextEntry()) != null) {
                 if (!entry.isDirectory() && isCsvFile(entry.getName())) {
-                    // Читаем содержимое CSV файла
+                    // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ CSV пїЅпїЅпїЅпїЅпїЅ
                     byte[] csvData = zis.readAllBytes();
                     zis.closeEntry();
-                    // Возвращаем Reader из byte array
+                    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ Reader пїЅпїЅ byte array
                     return new InputStreamReader(new ByteArrayInputStream(csvData), StandardCharsets.UTF_8);
                 }
                 zis.closeEntry();
             }
         }
 
-        throw new IOException("CSV файл не найден в архиве");
+        throw new IOException("CSV С„Р°Р№Р» РЅРµ РЅР°Р№РґРµРЅ РІ Р°СЂС…РёРІРµ");
     }
 
     private boolean isCsvFile(String fileName) {
