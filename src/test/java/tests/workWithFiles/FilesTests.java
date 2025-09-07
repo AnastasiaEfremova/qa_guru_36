@@ -11,6 +11,7 @@ import utils.ZipExtractorService;
 
 import java.io.InputStream;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -83,7 +84,7 @@ public class FilesTests {
 
         List<String> modelNames = carBrand.getModels().stream()
                 .map(CarModel::getName)
-                .toList();
+                .collect(Collectors.toList());
 
         assertTrue(modelNames.contains("Camry"));
         assertTrue(modelNames.contains("Corolla"));

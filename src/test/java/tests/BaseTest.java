@@ -11,6 +11,5 @@ public class BaseTest {
         Configuration.pageLoadStrategy = "eager"; // Дожидаемся полной загрузки страницы
         Configuration.browser = "chrome";
         Configuration.browserSize = "1920x1080";
-        //Configuration.holdBrowserOpen = true; // Только на время отладки, страница браузера не закроется
     }
 }
