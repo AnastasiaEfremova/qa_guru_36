@@ -1,6 +1,7 @@
 package tests.jenkins;
 
 import models.TestDataForRegistrationPage;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
@@ -17,6 +18,7 @@ public class RegistrationPageJenkinsTests extends BaseTest {
     TestDataForRegistrationPage testData = new TestDataForRegistrationPage().generateRandomData();
 
     @Test
+    @DisplayName("Успешное заполнение всех полей формы регистрации")
     void successFullFormTest() {
 
         registrationPage.openAutomationPracticeForm()
@@ -47,6 +49,7 @@ public class RegistrationPageJenkinsTests extends BaseTest {
     }
 
     @Test
+    @DisplayName("Успешное заполнение минимально допустимых полей формы регистрации")
     void successMinFormTest() {
 
         registrationPage.openAutomationPracticeForm()
@@ -62,6 +65,7 @@ public class RegistrationPageJenkinsTests extends BaseTest {
     }
 
     @Test
+    @DisplayName("Ошибка из-за незаполненного поля с номером телефона")
     void negativeFormTest() {
 
         registrationPage.openAutomationPracticeForm()
