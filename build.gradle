@@ -47,6 +47,13 @@ tasks.withType(Test) {
     useJUnitPlatform()
     systemProperty "console.encoding", "UTF-8"
 
+    systemProperties = [
+            'selenide.browser': 'chrome',
+            'selenide.headless': 'true',
+            'webdriver.chrome.driver': '',
+            'webdriver.chrome.whitelistedIps': ''
+    ]
+
     testLogging {
         events "started", "skipped", "failed", "standard_error", "standard_out"
         exceptionFormat "short"
