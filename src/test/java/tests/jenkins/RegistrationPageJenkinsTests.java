@@ -4,7 +4,7 @@ import models.TestDataForRegistrationPage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import pages.RegistrationPage;
+
 import tests.BaseTest;
 
 import static models.TestDataForRegistrationPage.file;
@@ -13,7 +13,7 @@ import static models.TestDataForRegistrationPage.file;
 @Tag("registrationPage")
 public class RegistrationPageJenkinsTests extends BaseTest {
 
-    RegistrationPage registrationPage = new RegistrationPage();
+    RegistrationPageJenkins registrationPage = new RegistrationPageJenkins();
 
     TestDataForRegistrationPage testData = new TestDataForRegistrationPage().generateRandomData();
 
