@@ -11,6 +11,7 @@ import tests.jenkins.helpers.Attach;
 
 import java.util.Map;
 
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static models.TestDataForRegistrationPage.file;
 
 
@@ -43,6 +44,7 @@ public class RegistrationPageJenkinsTests {
         Attach.browserConsoleLogs();
         Attach.addVideo();
 
+        closeWebDriver();
     }
 
     RegistrationPageJenkins registrationPage = new RegistrationPageJenkins();
