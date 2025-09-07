@@ -1,17 +1,41 @@
 package tests.jenkins;
 
 import models.TestDataForRegistrationPage;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import tests.BaseTest;
 
+import com.codeborne.selenide.Configuration;
 import static models.TestDataForRegistrationPage.file;
 
 
 @Tag("registrationPage")
-public class RegistrationPageJenkinsTests extends BaseTest {
+public class RegistrationPageJenkinsTests {
+
+    @BeforeAll
+    static void setupConfig() {
+        Configuration.baseUrl = "https://demoqa.com";
+        Configuration.pageLoadStrategy = "eager";
+        Configuration.browser = "chrome";
+        Configuration.browserSize = "1920x1080";
+        Configuration.headless = true;
+        Configuration.timeout = 10000;
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+
+        // Минимальные опции для работы в Jenkins
+//        Configuration.browserCapabilities.setCapability("goog:chromeOptions",
+//                java.util.Map.of(
+//                        "args", java.util.List.of(
+//                                "--no-sandbox",
+//                                "--disable-dev-shm-usage",
+//                                "--remote-allow-origins=*"
+//                        )
+//                )
+//        );
+    }
 
     RegistrationPageJenkins registrationPage = new RegistrationPageJenkins();
 
