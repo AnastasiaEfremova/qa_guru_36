@@ -14,9 +14,4 @@ public class BaseTest {
         Configuration.browser = "chrome";
         Configuration.browserSize = "1920x1080";
     }
-
-    @AfterEach
-    void tearDown() {
-        Selenide.closeWebDriver();
-    }
 }
