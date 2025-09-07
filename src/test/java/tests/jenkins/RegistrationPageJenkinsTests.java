@@ -1,5 +1,7 @@
 package tests.jenkins;
 
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import models.TestDataForRegistrationPage;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -24,17 +26,7 @@ public class RegistrationPageJenkinsTests {
         Configuration.headless = true;
         Configuration.timeout = 10000;
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
-
-        // Минимальные опции для работы в Jenkins
-//        Configuration.browserCapabilities.setCapability("goog:chromeOptions",
-//                java.util.Map.of(
-//                        "args", java.util.List.of(
-//                                "--no-sandbox",
-//                                "--disable-dev-shm-usage",
-//                                "--remote-allow-origins=*"
-//                        )
-//                )
-//        );
+        SelenideLogger.addListener("allure", new AllureSelenide());
     }
 
     RegistrationPageJenkins registrationPage = new RegistrationPageJenkins();
