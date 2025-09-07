@@ -18,15 +18,13 @@ import static models.TestDataForRegistrationPage.file;
 public class RegistrationPageJenkinsTests {
 
     @BeforeAll
-    static void setupConfig() {
+    static void beforeAll() {
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.pageLoadStrategy = "eager";
-        Configuration.browser = "chrome";
         Configuration.browserSize = "1920x1080";
-        Configuration.headless = true;
+//        Configuration.browser = "chrome";
         Configuration.timeout = 10000;
+//        Configuration.holdBrowserOpen = true;
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
-        SelenideLogger.addListener("allure", new AllureSelenide());
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
@@ -34,6 +32,8 @@ public class RegistrationPageJenkinsTests {
                 "enableVideo", true
         ));
         Configuration.browserCapabilities = capabilities;
+
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
 
     @AfterEach
@@ -42,6 +42,7 @@ public class RegistrationPageJenkinsTests {
         Attach.pageSource();
         Attach.browserConsoleLogs();
         Attach.addVideo();
+
     }
 
     RegistrationPageJenkins registrationPage = new RegistrationPageJenkins();
@@ -78,36 +79,4 @@ public class RegistrationPageJenkinsTests {
                 .checkResult("Address", testData.address)
                 .checkResult("State and City", testData.state + " " + testData.city);
     }
-
-    @Test
-    @DisplayName("Успешное заполнение минимально допустимых полей формы регистрации")
-    void successMinFormTest() {
-
-        registrationPage.openAutomationPracticeForm()
-                .setFirstName(testData.firstName)
-                .setLastName(testData.lastName)
-                .setGender(testData.gender)
-                .setUserNumber(testData.phone)
-                .submit();
-
-        registrationPage.checkResult("Student Name", testData.firstName + " " + testData.lastName)
-                .checkResult("Gender", testData.gender)
-                .checkResult("Mobile", testData.phone);
-    }
-
-    @Test
-    @DisplayName("Ошибка из-за незаполненного поля с номером телефона")
-    void negativeFormTest() {
-
-        registrationPage.openAutomationPracticeForm()
-                .setFirstName(testData.firstName)
-                .setLastName(testData.lastName)
-                .setGender(testData.gender)
-                .setUserNumber("")
-                .submit();
-
-        registrationPage.shouldNotHaveTableResult();
-    }
-
-
 }

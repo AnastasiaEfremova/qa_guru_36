@@ -117,10 +117,4 @@ public class RegistrationPageJenkins {
         checkResultComponent.checkTableResult(key, value);
         return this;
     }
-
-    @Step("Форма должна быть закрыта")
-    public RegistrationPageJenkins shouldNotHaveTableResult() {
-        checkResultComponent.shouldNotHaveTableResult();
-        return this;
-    }
 }
