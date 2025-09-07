@@ -3,14 +3,14 @@ package tests.jenkins;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import models.TestDataForRegistrationPage;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
-
-import tests.BaseTest;
+import org.junit.jupiter.api.*;
 
 import com.codeborne.selenide.Configuration;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import tests.jenkins.helpers.Attach;
+
+import java.util.Map;
+
 import static models.TestDataForRegistrationPage.file;
 
 
@@ -27,6 +27,21 @@ public class RegistrationPageJenkinsTests {
         Configuration.timeout = 10000;
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
         SelenideLogger.addListener("allure", new AllureSelenide());
+
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
+                "enableVNC", true,
+                "enableVideo", true
+        ));
+        Configuration.browserCapabilities = capabilities;
+    }
+
+    @AfterEach
+    void addAttachments() {
+        Attach.screenshotAs("Last screenshot");
+        Attach.pageSource();
+        Attach.browserConsoleLogs();
+        Attach.addVideo();
     }
 
     RegistrationPageJenkins registrationPage = new RegistrationPageJenkins();
